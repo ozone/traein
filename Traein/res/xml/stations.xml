@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright 2010 Google Inc.
+ 
+ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ use this file except in compliance with the License. You may obtain a copy of
+ the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ License for the specific language governing permissions and limitations under
+ the License.
+-->
+<stations>
+  <station code="ARKLW" name_en="Arklow" name_ga="An tInbhear Mór"/>
+  <station code="ATHRY" name_en="Athenry" name_ga="Baile Átha an Rí"/>
+  <station code="ATLNE" name_en="Athlone" name_ga="Baile Átha Luain"/>
+  <station code="ATHY" name_en="Athy" name_ga="Baile Átha Í"/>
+  <station code="ATMON" name_en="Attymon" name_ga="Ath Tiomáin"/>
+  <station code="BBRGN" name_en="Balbriggan" name_ga="Baile Brigin"/>
+  <station code="BALNA" name_en="Ballina" name_ga="Béal an Átha"/>
+  <station code="BSLOE" name_en="Ballinasloe" name_ga="Béal Átha na Sluaighe"/>
+  <station code="BBRHY" name_en="Ballybrophy" name_ga="Baile De Bróithe"/>
+  <station code="BCLAN" name_en="Ballycullane" name_ga="Baile Uí Choileáin"/>
+  <station code="BYHNS" name_en="Ballyhaunis" name_ga="Béal Átha hAmhnais"/>
+  <station code="BMOTE" name_en="Ballymote" name_ga="Baile an Mhóta"/>
+  <station code="BTEER" name_en="Banteer" name_ga="Bantír"/>
+  <station code="BHILL" name_en="Birdhill" name_ga="Cnocán an Éin Fhinn"/>
+  <station code="BOYLE" name_en="Boyle" name_ga="Mainistir na Búille"/>
+  <station code="BRAY" name_en="Bray" name_ga="Bré"/>
+  <station code="BRGTN" name_en="Bridgetown" name_ga="Baile an Droichid"/>
+  <station code="CAHIR" name_en="Cahir" name_ga="An Chathair"/>
+  <station code="CPILE" name_en="Campile" name_ga="Ceann Poill"/>
+  <station code="CRLOW" name_en="Carlow" name_ga="Ceatharlach"/>
+  <station code="CKOSH" name_en="Carrick on Shannon" name_ga="Cora Droma Rúisc"/>
+  <station code="CKOSR" name_en="Carrick on Suir" name_ga="Carraig na Siúire"/>
+  <station code="CLBAR" name_en="Castlebar" name_ga="Caisléan an Bharraigh"/>
+  <station code="CCONL" name_en="Castleconnell" name_ga="Caisléan Uí Chonaill"/>
+  <station code="CSREA" name_en="Castlerea" name_ga="An Caisleán Riabhach"/>
+  <station code="CVILL" name_en="Charleville" name_ga="Ráth Luirc"/>
+  <station code="CLARA" name_en="Clara" name_ga="Clóirtheach"/>
+  <station code="CLMRS" name_en="Claremorris" name_ga="Clá Chlainne Mhuiris"/>
+  <station code="GRGRD" name_en="Clongriffin" name_ga="Cluain Ghrífín"/>
+  <station code="CLMEL" name_en="Clonmel" name_ga="Cluain Meala"/>
+  <station code="CJRDN" name_en="Cloughjordan" name_ga="Cloch Shiurdáin"/>
+  <station code="COBH" name_en="Cobh" name_ga="An Cobh"/>
+  <station code="COLNY" name_en="Collooney" name_ga="Cúil Mhuine"/>
+  <station code="CORK" name_en="Cork" name_ga="Corcaigh"/>
+  <station code="DGHDA" name_en="Drogheda" name_ga="Droichead Átha"/>
+  <station code="DRMOD" name_en="Dromod" name_ga="Dromad"/>
+  <station code="CNLLY" name_en="Connolly" name_ga="Stáisiún Uí Chonghaile"/>
+  <station code="HSTON" name_en="Heuston" name_ga="Stáisiún Heuston"/>
+  <station code="PERSE" name_en="Pearse" name_ga="Stáisiún na bPiarsach"/>
+  <station code="DLERY" name_en="Dún Laoghaire" name_ga="Dún Laoghaire"/>
+  <station code="DDALK" name_en="Dundalk" name_ga="Dún Dealgan"/>
+  <station code="ENFLD" name_en="Enfield" name_ga="An Bóthar Bui"/>
+  <station code="ENNIS" name_en="Ennis" name_ga="Inis"/>
+  <station code="ECRTY" name_en="Enniscorthy" name_ga="Inis Córthaidh"/>
+  <station code="FFORE" name_en="Farranfore" name_ga="An Fearann Fuar"/>
+  <station code="FOTA" name_en="Fota" name_ga="Fota"/>
+  <station code="FXFRD" name_en="Foxford" name_ga="Béal Easa"/>
+  <station code="GALWY" name_en="Galway" name_ga="Gaillimh"/>
+  <station code="GOREY" name_en="Gorey" name_ga="Guaire"/>
+  <station code="GSTNS" name_en="Greystones" name_ga="Na Clocha Liatha"/>
+  <station code="KDARE" name_en="Kildare" name_ga="Cill Dara"/>
+  <station code="KKNNY" name_en="Kilkenny" name_ga="Cill Chainnigh"/>
+  <station code="KLRNY" name_en="Killarney" name_ga="Cill Airne"/>
+  <station code="LMRCK" name_en="Limerick" name_ga="Luimnigh"/>
+  <station code="LMRKJ" name_en="Limerick Junction" name_ga="Gabhal Luimnigh"/>
+  <station code="LFORD" name_en="Longford" name_ga="An Longfort"/>
+  <station code="MLLOW" name_en="Mallow" name_ga="Mala"/>
+  <station code="MHIDE" name_en="Malahide" name_ga="Mullach Íde"/>
+  <station code="MNLAJ" name_en="Manulla Junction" name_ga="Gabhal Maigh Nulla"/>
+  <station code="MYNTH" name_en="Maynooth" name_ga="Maigh Nuad"/>
+  <station code="MLSRT" name_en="Millstreet" name_ga="Sráid an Mhuilinn"/>
+  <station code="MSNEY" name_en="Mosney" name_ga="Maigh Muin"/>
+  <station code="MSTRM" name_en="Mostrim" name_ga="Meathas Troim"/>
+  <station code="MNEBG" name_en="Bagenalstown" name_ga="Mhuine Bheag"/>
+  <station code="MLGAR" name_en="Mullingar" name_ga="An Muileann gCearr"/>
+  <station code="NNAGH" name_en="Nenagh" name_ga="An tAonach"/>
+  <station code="NBRGE" name_en="Newbridge" name_ga="Droichead Nua"/>
+  <station code="PTRTN" name_en="Portarlington" name_ga="Cuil an tSudaire"/>
+  <station code="PTLSE" name_en="Portlaoise" name_ga="Port Laoise"/>
+  <station code="RDRUM" name_en="Rathdrum" name_ga="Ráth Droma"/>
+  <station code="RMORE" name_en="Rathmore" name_ga="An Ráth Mhór"/>
+  <station code="RSCMN" name_en="Roscommon" name_ga="Ros Comáin"/>
+  <station code="RCREA" name_en="Roscrea" name_ga="Ros Cré"/>
+  <station code="RLEPT" name_en="Rosslare Europort" name_ga="Ros Láir Europort"/>
+  <station code="RLSTD" name_en="Rosslare Strand" name_ga="Ros Láir an Trá"/>
+  <station code="SLIGO" name_en="Sligo" name_ga="Sligeach"/>
+  <station code="TPMOR" name_en="Templemore" name_ga="An Teampall Mór"/>
+  <station code="THTWN" name_en="Thomastown" name_ga="Baile Mhic Andáin"/>
+  <station code="THRLS" name_en="Thurles" name_ga="Durlas"/>
+  <station code="TIPRY" name_en="Tipperary" name_ga="Tiobraid Arann"/>
+  <station code="TRLEE" name_en="Tralee" name_ga="Trá Lí"/>
+  <station code="TMORE" name_en="Tullamore" name_ga="Tulach Mhor"/>
+  <station code="WFORD" name_en="Waterford Plunkett" name_ga="Port Láirge"/>
+  <station code="WBDGE" name_en="Wellingtonbridge" name_ga="Droichead Eoin"/>
+  <station code="WPORT" name_en="Westport" name_ga="Cathair na Mart"/>
+  <station code="WXFRD" name_en="Wexford" name_ga="Loch Garman"/>
+  <station code="WLOW" name_en="Wicklow" name_ga="Cill Mhantáin"/>
+  <station code="WLAWN" name_en="Woodlawn" name_ga="Móta"/>
+  <station code="MDLTN" name_en="Midleton" name_ga="Mainistir na Corann"/>
+  <station code="CGTWL" name_en="Carrigtwohill" name_ga="Carraig Thuathail"/>
+  <station code="BBRDG" name_en="Broombridge" name_ga="Droichead na Scuab"/>
+  <station code="BROCK" name_en="Blackrock" name_ga="An Charraig Dubh"/>
+  <station code="GCDK" name_en="Grand Canal Dock" name_ga="Duga na Canálach Móire"/>
+  <station code="BTSTN" name_en="Booterstown" name_ga="Baile an Bhóthair"/>
+  <station code="BYSDE" name_en="Bayside" name_ga="Cois Bá"/>
+  <station code="CGLOE" name_en="Carrigaloe" name_ga="Carraig an Ló"/>
+  <station code="CHORC" name_en="Cherry Orchard and Park West" name_ga="Gort na Silíní"/>
+  <station code="CLDKN" name_en="Clondalkin" name_ga="Cluain Dolcáin"/>
+  <station code="CLSLA" name_en="Clonsilla" name_ga="Cluain Saileach"/>
+  <station code="CMINE" name_en="Coolmine" name_ga="Cúil Mhín"/>
+  <station code="CNOCK" name_en="Castleknock" name_ga="Caisleán Cnucha"/>
+  <station code="CTARF" name_en="Clontarf Road" name_ga="Bóthar Chluain Tarbh"/>
+  <station code="DBATE" name_en="Donabate" name_ga="Domhnach Bat"/>
+  <station code="DCDRA" name_en="Drumcondra" name_ga="Droim Conrach"/>
+  <station code="DLKEY" name_en="Dalkey" name_ga="Deilginis"/>
+  <station code="ETOWN" name_en="Edgeworthstown" name_ga="Meathas Troim"/>
+  <station code="GHANE" name_en="Glounthaune" name_ga="An Gleanntán"/>
+  <station code="GLGRY" name_en="Glenageary" name_ga="Gleann na Caorach"/>
+  <station code="HOWTH" name_en="Howth" name_ga="Binn Éadair"/>
+  <station code="HTOWN" name_en="Harmonstown" name_ga="Baile Hearman"/>
+  <station code="HWTHJ" name_en="Howth Junction" name_ga="Gabhal Bhinn Éadair"/>
+  <station code="HZLCH" name_en="Hazelhatch" name_ga="Collchoill - Cill Droichid"/>
+  <station code="KBRCK" name_en="Kilbarrack" name_ga="Cill Bharrog"/>
+  <station code="KCOCK" name_en="Kilcock" name_ga="Cill Choca"/>
+  <station code="KCOOL" name_en="Kilcoole" name_ga="Cill Chomhghaill"/>
+  <station code="KILNY" name_en="Killiney" name_ga="Cill Iníon Léinin"/>
+  <station code="KLSTR" name_en="Killester" name_ga="Cill Easra"/>
+  <station code="LDWNE" name_en="Lansdowne Road" name_ga="Bóthar Lansdún"/>
+  <station code="LSLND" name_en="Littleisland" name_ga="An tOileán Beag"/>
+  <station code="LTOWN" name_en="Laytown" name_ga="An Inse"/>
+  <station code="LURGN" name_en="Lurgan" name_ga="An Lorgain"/>
+  <station code="LXCON" name_en="Leixlip Confey" name_ga="Léim an Bhradáin - Confaí"/>
+  <station code="LXLSA" name_en="Leixlip Louisa Bridge" name_ga="Léim an Bhradáin"/>
+  <station code="PMNCK" name_en="Portmarnock" name_ga="Port Mearnóg"/>
+  <station code="RAHNY" name_en="Raheny" name_ga="Ráth Eanaigh"/>
+  <station code="RBROK" name_en="Rushbrooke" name_ga="Rushbrooke"/>
+  <station code="RLUSK" name_en="Rush and Lusk" name_ga="An Ros agus Lusca"/>
+  <station code="SALNS" name_en="Sallins" name_ga="Na Solláin"/>
+  <station code="SCOVE" name_en="Sandycove" name_ga="Cuas an Ghainimh"/>
+  <station code="SEAPT" name_en="Seapoint" name_ga="Rinn na Mara"/>
+  <station code="SHILL" name_en="Salthill" name_ga="Cnoc an Salainn"/>
+  <station code="SIDNY" name_en="Sydney Parade" name_ga="Paráid Sydney"/>
+  <station code="SKILL" name_en="Shankill" name_ga="Seanchill"/>
+  <station code="SKRES" name_en="Skerries" name_ga="Na Sceirí"/>
+  <station code="SMONT" name_en="Sandymount" name_ga="Dhumhach Thra"/>
+  <station code="SUTTN" name_en="Sutton" name_ga="Cill Fhionntain"/>
+  <station code="TARA" name_en="Tara Street" name_ga="Sráid na Teamhrach, Baile Átha Cliath"/>
+  <station code="GSTON" name_en="Gormanston" name_ga="Baile Mhic Gormáin"/>
+  <station code="ASHTN" name_en="Ashtown" name_ga="Baile an Ásaigh"/>
+  <station code="MONVN" name_en="Monasterevin" name_ga="Mainistir Eimhin"/>
+  <station code="LBURN" name_en="Lisburn" name_ga="Lios na gCearrbhach"/>
+  <station code="NEWRY" name_en="Newry" name_ga="An tIúr"/>
+  <station code="PDOWN" name_en="Portadown" name_ga="Port an Dúnáin"/>
+  <station code="BFSTC" name_en="Belfast Central" name_ga="Béal Feirste Larnach"/>
+  <station code="DCKLS" name_en="Docklands" name_ga="Ceantar Dugaí"/>
+  <station code="PHNPK" name_en="Phoenix Park" name_ga="Páirc an Fhionn-Uisce"/>
+  <station code="ADMTN" name_en="Adamstown" name_ga="Baile Adaim"/>
+</stations>
