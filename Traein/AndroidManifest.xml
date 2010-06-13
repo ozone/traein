@@ -26,6 +26,11 @@
 
 		<provider
 			android:name=".StationProvider"
+			android:authorities="com.googlecode.traein">
+		</provider>
+		
+		<provider
+			android:name=".DeprecatedStationProvider"
 			android:authorities="com.googlecode.traein.stationprovider">
 		</provider>
 

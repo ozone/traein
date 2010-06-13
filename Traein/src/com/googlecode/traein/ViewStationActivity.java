@@ -88,6 +88,7 @@ public class ViewStationActivity extends ListActivity {
     private Dialog createErrorDialog(int titleRes, int detailsRes) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
         builder.setTitle(titleRes);
         builder.setMessage(detailsRes);
         builder.setPositiveButton(android.R.string.ok, Listeners.finishOnClick(this));
