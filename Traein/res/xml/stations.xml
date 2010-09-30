@@ -162,4 +162,12 @@
   <station code="DCKLS" name_en="Docklands" name_ga="Ceantar Dugaí"/>
   <station code="PHNPK" name_en="Phoenix Park" name_ga="Páirc an Fhionn-Uisce"/>
   <station code="ADMTN" name_en="Adamstown" name_ga="Baile Adaim"/>
+
+  <!-- Stations added on 30/09/2010 -->
+  <station code="GORT" name_en="Gort" name_ga="Gort"/>
+  <station code="SXMBR" name_en="Sixmilebridge" name_ga="Droichead Abhann Uí gCearnaigh"/>
+  <station code="ARHAN" name_en="Ardrahan" name_ga="Ard Raithin"/>
+  <station code="CRGHW" name_en="Craughwell" name_ga="Creachmhaoil"/>
+  <station code="DBYNE" name_en="Dunboyne" name_ga="Dún Búinne"/>
+  <station code="M3WAY" name_en="M3 Parkway" name_ga="Ollpháirc M3"/>
 </stations>
