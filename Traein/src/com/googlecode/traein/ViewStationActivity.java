@@ -157,7 +157,9 @@ public class ViewStationActivity extends ListActivity {
 
         @Override
         protected void onPostExecute(AsyncTaskResult result) {
-            result.report();
+        	if (!isFinishing()) {
+        		result.report();
+        	}
         }
     }
 }
