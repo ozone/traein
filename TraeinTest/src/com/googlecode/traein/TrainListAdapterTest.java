@@ -85,15 +85,15 @@ public class TrainListAdapterTest extends AndroidTestCase {
         TextView text1 = (TextView) view.findViewById(android.R.id.text1);
         TextView text2 = (TextView) view.findViewById(android.R.id.text2);
         assertEquals("12:40 Terminates", text1.getText());
-        assertEquals("Arriving from Bray", text2.getText());
+        assertEquals("From Bray", text2.getText());
 
         view = mAdapter.getView(1, view, null);
         assertEquals("12:45 Bray", text1.getText());
-        assertEquals("Arriving from Howth", text2.getText());
+        assertEquals("From Howth", text2.getText());
 
         view = mAdapter.getView(2, view, null);
         assertEquals("12:50 Terminates", text1.getText());
-        assertEquals("Arriving from Greystones", text2.getText());
+        assertEquals("From Greystones", text2.getText());
     }
 
     public void testGetViewTypeCount() {

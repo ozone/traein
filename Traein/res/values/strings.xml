@@ -25,7 +25,7 @@
 
 	<string name="train_terminates">%1$s Terminates</string>
 	<string name="train_destination">%1$s %2$s</string>
-	<string name="train_origin">Arriving from %1$s</string>
+	<string name="train_origin">From %1$s</string>
     <string name="no_trains">No trains.</string>
 
 	<!-- Error messages -->
