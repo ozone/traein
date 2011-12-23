@@ -51,9 +51,9 @@
   <station code="CORK" name_en="Cork" name_ga="Corcaigh"/>
   <station code="DGHDA" name_en="Drogheda" name_ga="Droichead Átha"/>
   <station code="DRMOD" name_en="Dromod" name_ga="Dromad"/>
-  <station code="CNLLY" name_en="Connolly" name_ga="Stáisiún Uí Chonghaile"/>
+  <station code="CNLLY" name_en="Connolly" name_ga="Stáisiún Uí Chonghaile"/>
   <station code="HSTON" name_en="Heuston" name_ga="Stáisiún Heuston"/>
-  <station code="PERSE" name_en="Pearse" name_ga="Stáisiún na bPiarsach"/>
+  <station code="PERSE" name_en="Pearse" name_ga="Stáisiún na bPiarsach"/>
   <station code="DLERY" name_en="Dún Laoghaire" name_ga="Dún Laoghaire"/>
   <station code="DDALK" name_en="Dundalk" name_ga="Dún Dealgan"/>
   <station code="ENFLD" name_en="Enfield" name_ga="An Bóthar Bui"/>
@@ -169,5 +169,5 @@
   <station code="ARHAN" name_en="Ardrahan" name_ga="Ard Raithin"/>
   <station code="CRGHW" name_en="Craughwell" name_ga="Creachmhaoil"/>
   <station code="DBYNE" name_en="Dunboyne" name_ga="Dún Búinne"/>
-  <station code="M3WAY" name_en="M3 Parkway" name_ga="Ollpháirc M3"/>
+  <station code="M3WAY" name_en="M3 Parkway" name_ga="Ollpháirc M3"/>
 </stations>
