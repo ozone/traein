@@ -20,13 +20,13 @@
 
 	<!-- Activity names -->
     <string name="select_a_station">Traein - Select a Station</string>
-    <string name="view_station">Traein - Next Trains</string>
+    <string name="view_station">Traein - Trains in the next hour</string>
     <string name="shortcut">Train station</string>
 
 	<string name="train_terminates">%1$s Terminates</string>
 	<string name="train_destination">%1$s %2$s</string>
 	<string name="train_origin">From %1$s</string>
-    <string name="no_trains">No trains.</string>
+    <string name="no_trains">No trains in the next hour.</string>
 
 	<!-- Error messages -->
     <string name="network_error">Network error</string>
