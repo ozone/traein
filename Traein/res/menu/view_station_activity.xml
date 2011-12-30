@@ -14,13 +14,17 @@
  License for the specific language governing permissions and limitations under
  the License.
 -->
-<resources>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <style name="SelectStation" parent="@android:style/Theme.Light">
-        <item name="android:textFilterEnabled">true</item>
-        <item name="android:fastScrollEnabled">true</item>
-    </style>
+    <item
+        android:id="@android:id/home"
+        android:icon="@drawable/ic_menu_home"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_home"/>
+    <item
+        android:id="@+id/refresh"
+        android:icon="@drawable/ic_menu_refresh"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_refresh"/>
 
-    <style name="ViewStation" parent="@android:style/Theme.Light" />
-
-</resources>
+</menu>

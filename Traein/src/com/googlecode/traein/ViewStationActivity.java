@@ -23,9 +23,13 @@ import java.util.ArrayList;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.Window;
 import android.widget.TextView;
 
@@ -46,6 +50,16 @@ public class ViewStationActivity extends ListActivity {
 
     private AsyncTask<String, Void, AsyncTaskResult> mFetchTrainsTask;
 
+    private class ActionBarHelper {
+        public void setHomeButtonEnabled(boolean enabled) {
+            getActionBar().setHomeButtonEnabled(enabled);
+        }
+
+        public void setDisplayHomeAsUpEnabled(boolean enabled) {
+            getActionBar().setDisplayHomeAsUpEnabled(enabled);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,23 +72,52 @@ public class ViewStationActivity extends ListActivity {
         ((TextView)findViewById(R.id.station_name_en)).setText(cursor.getString(2));
         ((TextView)findViewById(R.id.station_name_ga)).setText(cursor.getString(3));
         mEmpty = (TextView)findViewById(android.R.id.empty);
+
+        // Use the action bar instead of the option menu on Honeycomb and over.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            ActionBarHelper helper = new ActionBarHelper();
+            helper.setDisplayHomeAsUpEnabled(true);
+            // Enable the home button on ICS (it is enabled by default in Honeycomb.)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                helper.setHomeButtonEnabled(true);
+            }
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.view_station_activity, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.refresh:
+                cancelFetchTrainTask();
+                startFetchTrainTask();
+                return true;
+            case android.R.id.home:
+                Intent intent = new Intent(this, SelectStationActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        setProgressBarIndeterminateVisibility(true);
-        mFetchTrainsTask = new FetchTrainsTask();
-        mFetchTrainsTask.execute(mCode);
+        startFetchTrainTask();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (mFetchTrainsTask != null && mFetchTrainsTask.getStatus() != AsyncTask.Status.RUNNING) {
-            mFetchTrainsTask.cancel(true);
-            mFetchTrainsTask = null;
-        }
+        cancelFetchTrainTask();
     }
 
     @Override
@@ -88,6 +131,19 @@ public class ViewStationActivity extends ListActivity {
                 return createErrorDialog(R.string.timeout_error, R.string.timeout_error_details);
             default:
                 throw new IllegalStateException("Unknown dialog.");
+        }
+    }
+
+    private void startFetchTrainTask() {
+        setProgressBarIndeterminateVisibility(true);
+        mFetchTrainsTask = new FetchTrainsTask();
+        mFetchTrainsTask.execute(mCode);
+    }
+
+    private void cancelFetchTrainTask() {
+        if (mFetchTrainsTask != null && mFetchTrainsTask.getStatus() != AsyncTask.Status.RUNNING) {
+            mFetchTrainsTask.cancel(true);
+            mFetchTrainsTask = null;
         }
     }
 

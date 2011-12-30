@@ -16,11 +16,11 @@
 -->
 <resources>
 
-    <style name="SelectStation" parent="@android:style/Theme.Light">
+    <style name="SelectStation" parent="@android:style/Theme.Holo.Light">
         <item name="android:textFilterEnabled">true</item>
         <item name="android:fastScrollEnabled">true</item>
     </style>
 
-    <style name="ViewStation" parent="@android:style/Theme.Light" />
+    <style name="ViewStation" parent="@android:style/Theme.Holo.Light" />
 
 </resources>

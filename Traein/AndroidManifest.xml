@@ -40,7 +40,8 @@
         <activity
             android:name=".SelectStationActivity"
             android:label="@string/app_name"
-            android:theme="@style/list_stations" >
+            android:launchMode="singleTop"
+            android:theme="@style/SelectStation" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -65,7 +66,8 @@
         <activity
             android:name=".ViewStationActivity"
             android:label="@string/view_station"
-            android:theme="@android:style/Theme.Light" >
+            android:noHistory="true"
+            android:theme="@style/ViewStation" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 

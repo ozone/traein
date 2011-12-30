@@ -16,6 +16,7 @@
 
 package com.googlecode.traein;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ContentUris;
@@ -23,6 +24,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -45,6 +48,8 @@ public class SelectStationActivity extends ListActivity {
 
     private static final int TIPS_DIALOG = 0;
 
+    private static final int ABOUT_DIALOG = 1;
+
     private static final String PREFERENCE_TIP_COUNTER = "tip.counter";
 
     /** Called when the activity is first created. */
@@ -63,10 +68,33 @@ public class SelectStationActivity extends ListActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.select_station_activity, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.about:
+                showDialog(ABOUT_DIALOG);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
             case TIPS_DIALOG:
                 return TipsHelper.onCreateTipsDialog(this, PREFERENCE_TIP_COUNTER);
+            case ABOUT_DIALOG:
+                return new AlertDialog.Builder(this).setTitle(R.string.about_dialog_title)
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setMessage(R.string.about_dialog_message)
+                        .setNeutralButton(R.string.dismiss, Listeners.DISMISS_ON_CLICK).create();
             default:
                 throw new IllegalArgumentException("Unknown dialog id: " + id);
         }

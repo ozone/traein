@@ -34,4 +34,10 @@ public final class Listeners {
         };
     }
 
+    public static final OnClickListener DISMISS_ON_CLICK = new OnClickListener() {
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+        }
+    };
+
 }
