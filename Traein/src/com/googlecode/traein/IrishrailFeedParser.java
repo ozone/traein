@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.googlecode.traein;
 
 import java.io.IOException;
@@ -76,16 +77,22 @@ public class IrishrailFeedParser {
     }
 
     private static final String TIME = "\\d{1,2}:\\d{2}";
+
     private static final String TRAIN = "[0-9A-Z]{4,5}";
+
     private static final String STATION = ".*";
+
     private static final Pattern TITLE_PATTERN = Pattern.compile("^" + TIME + "  to " + STATION
             + "$");
+
     private static final Pattern TITLE_TERMINUS_PATTERN = Pattern.compile("^Terminates at  "
             + STATION + "$");
+
     private static final Pattern DESCRIPTION_PATTERN = Pattern.compile("^" + TRAIN
             + " - Origin : (" + STATION + ") - Destination : (" + STATION
             + ") \\| -   Expected departure at " + STATION + " :(" + TIME
             + ") \\| -   Scheduled departure at " + TIME + "$");
+
     private static final Pattern DESCRIPTION_TERMINUS_PATTERN = Pattern.compile("^" + TRAIN
             + " - Origin : (" + STATION + ") - Destination : (" + STATION
             + ") \\| -   Expected arrival at " + STATION + " : (" + TIME + ") -   Terminates at  "

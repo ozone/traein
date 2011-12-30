@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.googlecode.traein;
 
 import java.io.IOException;
@@ -29,7 +30,9 @@ import android.util.Log;
 
 public class StationDbOpenHelper extends SQLiteOpenHelper {
     private static final String TAG = StationDbOpenHelper.class.getSimpleName();
+
     private static final String DATABASE_NAME = "traein.db";
+
     private static final int DATABASE_VERSION = 7;
 
     private final Context mContext;
@@ -82,8 +85,10 @@ public class StationDbOpenHelper extends SQLiteOpenHelper {
             values.put(Station.CODE, code);
             values.put(Station.ENGLISH_NAME, englishName);
             values.put(Station.GAELIC_NAME, gaelicName);
-            if (mDb.update(Station.TABLE_NAME, values, Station.CODE + "=?", new String[] { code }) != 1) {
-              mDb.insert(Station.TABLE_NAME, Station.CODE, values);
+            if (mDb.update(Station.TABLE_NAME, values, Station.CODE + "=?", new String[] {
+                code
+            }) != 1) {
+                mDb.insert(Station.TABLE_NAME, Station.CODE, values);
             }
         }
     }

@@ -13,14 +13,18 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.googlecode.traein;
 
 public final class Station {
     public static final String TABLE_NAME = "stations";
 
     public static final String _ID = "_id";
+
     public static final String CODE = "code";
+
     public static final String ENGLISH_NAME = "english_name";
+
     public static final String GAELIC_NAME = "gaelic_name";
 
     public static final String SORT_BY_NAME = ENGLISH_NAME + " ASC";

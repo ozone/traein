@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.googlecode.traein;
 
 import android.app.Dialog;
@@ -28,11 +29,22 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 public class SelectStationActivity extends ListActivity {
-    private static final String[] PROJECTION = { Station._ID, Station.ENGLISH_NAME };
-    private static final String[] FROM = { Station.ENGLISH_NAME };
-    private static final int[] TO = { android.R.id.text1 };
+    private static final String[] PROJECTION = {
+            Station._ID, Station.ENGLISH_NAME
+    };
+
+    private static final String[] FROM = {
+        Station.ENGLISH_NAME
+    };
+
+    private static final int[] TO = {
+        android.R.id.text1
+    };
+
     private static final int LAYOUT = android.R.layout.simple_list_item_1;
+
     private static final int TIPS_DIALOG = 0;
+
     private static final String PREFERENCE_TIP_COUNTER = "tip.counter";
 
     /** Called when the activity is first created. */
@@ -53,10 +65,10 @@ public class SelectStationActivity extends ListActivity {
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
-        case TIPS_DIALOG:
-            return TipsHelper.onCreateTipsDialog(this, PREFERENCE_TIP_COUNTER);
-        default:
-            throw new IllegalArgumentException("Unknown dialog id: " + id);
+            case TIPS_DIALOG:
+                return TipsHelper.onCreateTipsDialog(this, PREFERENCE_TIP_COUNTER);
+            default:
+                throw new IllegalArgumentException("Unknown dialog id: " + id);
         }
     }
 

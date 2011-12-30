@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.googlecode.traein;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class TrainListAdapterTest extends AndroidTestCase {
 
     private static final class MockDataSetObserver extends DataSetObserver {
         int onChangedCallCount = 0;
+
         int onInvalidatedCallCount = 0;
 
         @Override
@@ -40,7 +42,9 @@ public class TrainListAdapterTest extends AndroidTestCase {
     }
 
     private ArrayList<Train> mTrains;
+
     private TrainListAdapter mAdapter;
+
     private TrainListAdapter mEmptyAdapter;
 
     @Override
@@ -82,8 +86,8 @@ public class TrainListAdapterTest extends AndroidTestCase {
         mTrains.add(new Train("Greystones", "Howth", true, "12:50"));
 
         View view = mAdapter.getView(0, null, null);
-        TextView text1 = (TextView) view.findViewById(android.R.id.text1);
-        TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+        TextView text1 = (TextView)view.findViewById(android.R.id.text1);
+        TextView text2 = (TextView)view.findViewById(android.R.id.text2);
         assertEquals("12:40 Terminates", text1.getText());
         assertEquals("From Bray", text2.getText());
 

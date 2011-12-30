@@ -13,12 +13,16 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.googlecode.traein;
 
 public class Train {
     private final String mOrigin;
+
     private final String mDestination;
+
     private final boolean mTerminus;
+
     private final String mTime;
 
     public Train(String origin, String destination, boolean terminus, String time) {
@@ -56,7 +60,7 @@ public class Train {
         } else if (!(other instanceof Train)) {
             return false;
         } else {
-            Train o = (Train) other;
+            Train o = (Train)other;
             return mTerminus == o.mTerminus && mOrigin.equals(o.mOrigin)
                     && mDestination.equals(o.mDestination) && mTime.equals(o.mTime);
         }

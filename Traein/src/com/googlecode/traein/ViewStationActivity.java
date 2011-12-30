@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.googlecode.traein;
 
 import java.io.IOException;
@@ -29,15 +30,20 @@ import android.view.Window;
 import android.widget.TextView;
 
 public class ViewStationActivity extends ListActivity {
-    private static final String[] PROJECTION = { Station._ID, Station.CODE, Station.ENGLISH_NAME,
-            Station.GAELIC_NAME };
+    private static final String[] PROJECTION = {
+            Station._ID, Station.CODE, Station.ENGLISH_NAME, Station.GAELIC_NAME
+    };
 
     private static final int NETWORK_ERROR_DIALOG = 0;
+
     private static final int PARSER_ERROR_DIALOG = 1;
+
     private static final int TIMEOUT_ERROR_DIALOG = 2;
 
     private String mCode;
+
     private TextView mEmpty;
+
     private AsyncTask<String, Void, AsyncTaskResult> mFetchTrainsTask;
 
     @Override
@@ -49,9 +55,9 @@ public class ViewStationActivity extends ListActivity {
         cursor.moveToFirst();
         mCode = cursor.getString(1);
         setContentView(R.layout.station_view);
-        ((TextView) findViewById(R.id.station_name_en)).setText(cursor.getString(2));
-        ((TextView) findViewById(R.id.station_name_ga)).setText(cursor.getString(3));
-        mEmpty = (TextView) findViewById(android.R.id.empty);
+        ((TextView)findViewById(R.id.station_name_en)).setText(cursor.getString(2));
+        ((TextView)findViewById(R.id.station_name_ga)).setText(cursor.getString(3));
+        mEmpty = (TextView)findViewById(android.R.id.empty);
     }
 
     @Override
@@ -74,14 +80,14 @@ public class ViewStationActivity extends ListActivity {
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
-        case NETWORK_ERROR_DIALOG:
-            return createErrorDialog(R.string.network_error, R.string.network_error_details);
-        case PARSER_ERROR_DIALOG:
-            return createErrorDialog(R.string.parser_error, R.string.parser_error_details);
-        case TIMEOUT_ERROR_DIALOG:
-            return createErrorDialog(R.string.timeout_error, R.string.timeout_error_details);
-        default:
-            throw new IllegalStateException("Unknown dialog.");
+            case NETWORK_ERROR_DIALOG:
+                return createErrorDialog(R.string.network_error, R.string.network_error_details);
+            case PARSER_ERROR_DIALOG:
+                return createErrorDialog(R.string.parser_error, R.string.parser_error_details);
+            case TIMEOUT_ERROR_DIALOG:
+                return createErrorDialog(R.string.timeout_error, R.string.timeout_error_details);
+            default:
+                throw new IllegalStateException("Unknown dialog.");
         }
     }
 
@@ -157,9 +163,9 @@ public class ViewStationActivity extends ListActivity {
 
         @Override
         protected void onPostExecute(AsyncTaskResult result) {
-        	if (!isFinishing()) {
-        		result.report();
-        	}
+            if (!isFinishing()) {
+                result.report();
+            }
         }
     }
 }

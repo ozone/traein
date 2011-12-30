@@ -14,64 +14,58 @@
  License for the specific language governing permissions and limitations under
  the License.
 -->
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-	<TwoLineListItem
-		android:paddingTop="2dip"
-		android:paddingBottom="12dip"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:minHeight="?android:attr/listPreferredItemHeight"
-		android:mode="twoLine"
-		android:background="@drawable/station_sign_bg"
-	>
-	
-		<TextView
-			android:id="@+id/station_name_en"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="6dip"
-			android:gravity="center"
-			android:textAppearance="?android:attr/textAppearanceLarge"
-		/>
-	
-		<TextView
-			android:id="@+id/station_name_ga"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:layout_below="@+id/station_name_en"
-			android:layout_alignLeft="@+id/station_name_en"
-			android:gravity="center"
-			android:textAppearance="?android:attr/textAppearanceLarge"
-			android:textColor="#ff681c"
-		/>
-	</TwoLineListItem>
-		
-	<ListView
-		android:id="@android:id/list"
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:background="#000"
-		android:divider="#ff4b36"
-		android:clickable="false"
-		android:cacheColorHint="#000"
-		android:listSelector="#0000"
-	/>
-	
-	<TextView
-		android:id="@android:id/empty"
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:background="#000"
-	  	android:textAppearance="?android:attr/textAppearanceLarge"
-	  	android:textColor="#ff4b36"
-	  	android:shadowColor="#ff4b36"
-	  	android:shadowRadius="1.5"
-	  	android:gravity="center"
-	/>
+    <TwoLineListItem
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/station_sign_bg"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:mode="twoLine"
+        android:paddingBottom="12dip"
+        android:paddingTop="2dip" >
+
+        <TextView
+            android:id="@+id/station_name_en"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dip"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/station_name_ga"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/station_name_en"
+            android:layout_below="@+id/station_name_en"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ff681c" />
+    </TwoLineListItem>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#000"
+        android:cacheColorHint="#000"
+        android:clickable="false"
+        android:divider="#ff4b36"
+        android:listSelector="#0000" />
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#000"
+        android:gravity="center"
+        android:shadowColor="#ff4b36"
+        android:shadowRadius="1.5"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ff4b36" />
 
 </LinearLayout>

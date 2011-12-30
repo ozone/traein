@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.googlecode.traein;
 
 import java.util.HashMap;
@@ -26,15 +27,19 @@ import android.net.Uri;
 
 public class StationProvider extends ContentProvider {
     public static final String AUTHORITY = "com.googlecode.traein";
+
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/stations");
 
     public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.traein.station";
+
     public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.traein.station";
 
     private static final UriMatcher URI_MATCHER;
+
     private static final HashMap<String, String> PROJECTION_MAP;
 
     private static final int STATIONS = 1;
+
     private static final int STATION_ID = 2;
 
     static {
@@ -59,12 +64,12 @@ public class StationProvider extends ContentProvider {
     @Override
     public String getType(Uri uri) {
         switch (URI_MATCHER.match(uri)) {
-        case STATIONS:
-            return CONTENT_TYPE;
-        case STATION_ID:
-            return CONTENT_ITEM_TYPE;
-        default:
-            return null;
+            case STATIONS:
+                return CONTENT_TYPE;
+            case STATION_ID:
+                return CONTENT_ITEM_TYPE;
+            default:
+                return null;
         }
     }
 
@@ -87,16 +92,16 @@ public class StationProvider extends ContentProvider {
         builder.setProjectionMap(PROJECTION_MAP);
 
         switch (URI_MATCHER.match(uri)) {
-        case STATIONS:
-            return builder.query(mOpenHelper.getReadableDatabase(), projection, selection,
-                    selectionArgs, null, null, sortOrder);
-        case STATION_ID:
-            builder.appendWhere(Station._ID + "=");
-            builder.appendWhereEscapeString(uri.getLastPathSegment());
-            return builder.query(mOpenHelper.getReadableDatabase(), projection, selection,
-                    selectionArgs, null, null, sortOrder);
-        default:
-            throw new IllegalArgumentException("Unknown URI: " + uri);
+            case STATIONS:
+                return builder.query(mOpenHelper.getReadableDatabase(), projection, selection,
+                        selectionArgs, null, null, sortOrder);
+            case STATION_ID:
+                builder.appendWhere(Station._ID + "=");
+                builder.appendWhereEscapeString(uri.getLastPathSegment());
+                return builder.query(mOpenHelper.getReadableDatabase(), projection, selection,
+                        selectionArgs, null, null, sortOrder);
+            default:
+                throw new IllegalArgumentException("Unknown URI: " + uri);
         }
     }
 

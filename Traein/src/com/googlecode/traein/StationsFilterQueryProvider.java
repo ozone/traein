@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.googlecode.traein;
 
 import android.app.Activity;
@@ -23,10 +24,14 @@ import android.widget.FilterQueryProvider;
 
 public class StationsFilterQueryProvider implements FilterQueryProvider {
     private static final char ESCAPE = '/';
+
     private static final String SELECTION = Station.ENGLISH_NAME + " LIKE ? ESCAPE '" + ESCAPE
             + "'";
+
     private final Activity mActivity;
+
     private final String[] mProjection;
+
     private final String mSortOrder;
 
     public StationsFilterQueryProvider(Activity activity, String[] projection, String sortOrder) {
@@ -44,7 +49,9 @@ public class StationsFilterQueryProvider implements FilterQueryProvider {
             builder.append('%');
             SqliteUtils.escapeLikeExpr(builder, constraint, ESCAPE);
             builder.append('%');
-            final String[] selectionArgs = new String[] { builder.toString() };
+            final String[] selectionArgs = new String[] {
+                builder.toString()
+            };
             return mActivity.managedQuery(uri, mProjection, SELECTION, selectionArgs, mSortOrder);
         }
     }

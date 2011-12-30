@@ -15,49 +15,37 @@
  the License.
 -->
 <resources>
-	<!-- Application name -->
+
+    <!-- Application name -->
     <string name="app_name">Traein</string>
 
-	<!-- Activity names -->
+    <!-- Activity names -->
     <string name="select_a_station">Traein - Select a Station</string>
     <string name="view_station">Traein - Trains in the next hour</string>
     <string name="shortcut">Train station</string>
-
-	<string name="train_terminates">%1$s Terminates</string>
-	<string name="train_destination">%1$s %2$s</string>
-	<string name="train_origin">From %1$s</string>
+    <string name="train_terminates">%1$s Terminates</string>
+    <string name="train_destination">%1$s %2$s</string>
+    <string name="train_origin">From %1$s</string>
     <string name="no_trains">No trains in the next hour.</string>
 
-	<!-- Error messages -->
+    <!-- Error messages -->
     <string name="network_error">Network error</string>
-    <string name="network_error_details">
-    	I was unable to retrieve the list of incoming trains because of a
-    	network error. Please try again later.
-    </string>
-
+    <string name="network_error_details">I was unable to retrieve the list of incoming trains because of a network error. Please try again later.</string>
     <string name="parser_error">Parser error</string>
-    <string name="parser_error_details">
-    	I was unable to understand the list of incoming trains because of a
-    	parsing error. Please try again later.
-    </string>
-
+    <string name="parser_error_details">I was unable to understand the list of incoming trains because of a parsing error. Please try again later.</string>
     <string name="timeout_error">Timeout error</string>
-    <string name="timeout_error_details">
-    	Downloading the list of trains is taking too long. Please try again
-    	later.
-    </string>
-    
+    <string name="timeout_error_details">Downloading the list of trains is taking too long. Please try again later.</string>
+
     <!-- Tips -->
     <string name="tips_dialog_title">Did you know?</string>
     <string name="tips_dialog_more_button_label">Show me how</string>
     <string name="tips_dialog_dismiss_button_label">Dismiss</string>
+
     <string-array name="tips_dialog_messages">
-    	<item>
-    	You can create shortcuts to your favourite stations directly from the
-    	home screen.
-    	</item>
+        <item>You can create shortcuts to your favourite stations directly from the home screen.</item>
     </string-array>
     <string-array name="tips_dialog_uri">
-    	<item>http://www.youtube.com/watch?v=mQqBGXvx96w</item>
+        <item>http://www.youtube.com/watch?v=mQqBGXvx96w</item>
     </string-array>
+
 </resources>

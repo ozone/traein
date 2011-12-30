@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.googlecode.traein;
 
 import android.app.Activity;
@@ -25,11 +26,13 @@ import android.os.Parcelable;
 public class CreateShortcutActivity extends Activity {
 
     public static final int PICK_STATION_REQUEST = 0;
-    private static final String[] PROJECTION = { Station.ENGLISH_NAME };
+
+    private static final String[] PROJECTION = {
+        Station.ENGLISH_NAME
+    };
 
     /*
      * (non-Javadoc)
-     * 
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
     @Override
@@ -41,7 +44,6 @@ public class CreateShortcutActivity extends Activity {
 
     /*
      * (non-Javadoc)
-     * 
      * @see android.app.Activity#onActivityResult(int, int,
      * android.content.Intent)
      */

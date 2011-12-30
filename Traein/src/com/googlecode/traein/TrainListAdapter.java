@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.googlecode.traein;
 
 import java.util.List;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 
 public class TrainListAdapter extends ArrayAdapter<Train> {
     private static final int RESOURCE = R.layout.train_list_item;
+
     private final LayoutInflater mLayoutInflater;
 
     public TrainListAdapter(Context context, List<Train> trains) {
@@ -46,7 +48,7 @@ public class TrainListAdapter extends ArrayAdapter<Train> {
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            holder = (ViewHolder)convertView.getTag();
         }
         Train train = getItem(position);
         holder.setText1(renderText1(train));
@@ -69,11 +71,12 @@ public class TrainListAdapter extends ArrayAdapter<Train> {
 
     private static class ViewHolder {
         private final TextView mTextView1;
+
         private final TextView mTextView2;
 
         public ViewHolder(View convertView) {
-            mTextView1 = (TextView) convertView.findViewById(android.R.id.text1);
-            mTextView2 = (TextView) convertView.findViewById(android.R.id.text2);
+            mTextView1 = (TextView)convertView.findViewById(android.R.id.text1);
+            mTextView2 = (TextView)convertView.findViewById(android.R.id.text2);
         }
 
         public void setText1(String text) {

@@ -15,5 +15,7 @@
  the License.
 -->
 <resources>
+
     <string name="app_name">TraeinTest</string>
+
 </resources>

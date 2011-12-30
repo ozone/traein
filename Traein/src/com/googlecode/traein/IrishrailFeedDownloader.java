@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.googlecode.traein;
 
 import java.io.IOException;
@@ -30,7 +31,9 @@ import android.util.Log;
 
 public class IrishrailFeedDownloader {
     private static final String TAG = IrishrailFeedDownloader.class.getSimpleName();
+
     private static final String IRISHRAIL_FEED_URL = "http://www.irishrail.ie/realtime/publicinfo.asp?strLocation=";
+
     private static final int FETCH_TIMEOUT_MS = 60 * 1000;
 
     public static ArrayList<Train> download(String stationCode) throws ParserException, IOException {
@@ -40,16 +43,17 @@ public class IrishrailFeedDownloader {
             HttpGet request = new HttpGet(IRISHRAIL_FEED_URL + URLEncoder.encode(stationCode));
             HttpResponse response = client.execute(request);
             switch (response.getStatusLine().getStatusCode()) {
-            case 200:
-                return parseSuccessfulResponse(response);
-            case 500:
-                // Hack: irishrails returns 500 when no trains are incoming
-                // -.-
-                return new ArrayList<Train>();
-            default:
-                Log.e(TAG, "Unexpected status while fetching irishrail RSS feed: "
-                        + response.getStatusLine());
-                throw new IOException();
+                case 200:
+                    return parseSuccessfulResponse(response);
+                case 500:
+                    // Hack: irishrails returns 500 when no trains are incoming
+                    // -.-
+                    return new ArrayList<Train>();
+                default:
+                    Log.e(TAG,
+                            "Unexpected status while fetching irishrail RSS feed: "
+                                    + response.getStatusLine());
+                    throw new IOException();
             }
         } finally {
             client.getConnectionManager().shutdown();

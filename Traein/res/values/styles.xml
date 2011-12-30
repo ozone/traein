@@ -15,8 +15,10 @@
  the License.
 -->
 <resources>
-	<style name="list_stations" parent="@android:style/Theme.Light">
-		<item name="android:textFilterEnabled">true</item>
-		<item name="android:fastScrollEnabled">true</item>
-	</style>
+
+    <style name="list_stations" parent="@android:style/Theme.Light">
+        <item name="android:textFilterEnabled">true</item>
+        <item name="android:fastScrollEnabled">true</item>
+    </style>
+
 </resources>
