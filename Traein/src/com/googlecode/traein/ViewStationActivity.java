@@ -16,10 +16,6 @@
 
 package com.googlecode.traein;
 
-import java.io.IOException;
-import java.net.SocketTimeoutException;
-import java.util.ArrayList;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
@@ -28,21 +24,30 @@ import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.net.SocketTimeoutException;
+import java.util.ArrayList;
 
 public class ViewStationActivity extends ListActivity {
     private static final String[] PROJECTION = {
             Station._ID, Station.CODE, Station.ENGLISH_NAME, Station.GAELIC_NAME
     };
 
+    private static final String INSTALL_SHORTCUT_ACTION = "com.android.launcher.action.INSTALL_SHORTCUT";
+
     private static final int NETWORK_ERROR_DIALOG = 0;
 
     private static final int PARSER_ERROR_DIALOG = 1;
 
     private static final int TIMEOUT_ERROR_DIALOG = 2;
+
+    private String mStation;
 
     private String mCode;
 
@@ -68,8 +73,9 @@ public class ViewStationActivity extends ListActivity {
         Cursor cursor = managedQuery(getIntent().getData(), PROJECTION, null, null, null);
         cursor.moveToFirst();
         mCode = cursor.getString(1);
+        mStation = cursor.getString(2);
         setContentView(R.layout.station_view);
-        ((TextView)findViewById(R.id.station_name_en)).setText(cursor.getString(2));
+        ((TextView)findViewById(R.id.station_name_en)).setText(mStation);
         ((TextView)findViewById(R.id.station_name_ga)).setText(cursor.getString(3));
         mEmpty = (TextView)findViewById(android.R.id.empty);
 
@@ -77,7 +83,8 @@ public class ViewStationActivity extends ListActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             ActionBarHelper helper = new ActionBarHelper();
             helper.setDisplayHomeAsUpEnabled(true);
-            // Enable the home button on ICS (it is enabled by default in Honeycomb.)
+            // Enable the home button on ICS (it is enabled by default in
+            // Honeycomb.)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
                 helper.setHomeButtonEnabled(true);
             }
@@ -92,6 +99,20 @@ public class ViewStationActivity extends ListActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Only enable the "create shortcut" menu item if a broadcast receiver
+        // can handle the install shortcut action. The stock launcher would, but
+        // some launchers might not.
+        final MenuItem createShortcutItem = menu.findItem(R.id.shortcut);
+        if (createShortcutItem != null) {
+            final boolean installShortcutActionAvailable = getPackageManager()
+                    .queryBroadcastReceivers(new Intent(INSTALL_SHORTCUT_ACTION), 0).size() > 0;
+            createShortcutItem.setEnabled(installShortcutActionAvailable);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.refresh:
@@ -102,6 +123,16 @@ public class ViewStationActivity extends ListActivity {
                 Intent intent = new Intent(this, SelectStationActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                return true;
+            case R.id.shortcut:
+                Intent shortcutIntent = new Intent(Intent.ACTION_VIEW, getIntent().getData());
+                Intent createShortcutIntent = new Intent(INSTALL_SHORTCUT_ACTION);
+                createShortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+                createShortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, mStation);
+                Parcelable iconResource = Intent.ShortcutIconResource.fromContext(this,
+                        R.drawable.ic_launcher_traein);
+                createShortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, iconResource);
+                sendBroadcast(createShortcutIntent);
                 return true;
             default:
                 return super.onContextItemSelected(item);
