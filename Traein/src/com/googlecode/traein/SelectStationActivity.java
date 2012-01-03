@@ -21,9 +21,11 @@ import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ContentUris;
 import android.content.Intent;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -85,15 +87,26 @@ public class SelectStationActivity extends ListActivity {
         }
     }
 
+    private String versionName() {
+        try {
+            return getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+        } catch (NameNotFoundException e) {
+            return "<unknown version>";
+        }
+    }
+
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
             case TIPS_DIALOG:
                 return TipsHelper.onCreateTipsDialog(this, PREFERENCE_TIP_COUNTER);
             case ABOUT_DIALOG:
-                return new AlertDialog.Builder(this).setTitle(R.string.about_dialog_title)
+                return new AlertDialog.Builder(this)
+                        .setTitle(R.string.about_dialog_title)
                         .setIcon(android.R.drawable.ic_dialog_info)
-                        .setMessage(R.string.about_dialog_message)
+                        .setMessage(
+                                Html.fromHtml(getString(R.string.about_dialog_message,
+                                        versionName())))
                         .setNeutralButton(R.string.dismiss, Listeners.DISMISS_ON_CLICK).create();
             default:
                 throw new IllegalArgumentException("Unknown dialog id: " + id);
