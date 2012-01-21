@@ -16,11 +16,6 @@
 
 package com.googlecode.traein;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -29,10 +24,14 @@ import org.apache.http.params.HttpConnectionParams;
 
 import android.util.Log;
 
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+
 public class IrishrailFeedDownloader {
     private static final String TAG = IrishrailFeedDownloader.class.getSimpleName();
 
-    private static final String IRISHRAIL_FEED_URL = "http://www.irishrail.ie/realtime/publicinfo.asp?strLocation=";
+    private static final String IRISHRAIL_FEED_URL = "http://www.irishrail.ie/realtime/station_details.jsp?ref=";
 
     private static final int FETCH_TIMEOUT_MS = 60 * 1000;
 
@@ -42,18 +41,13 @@ public class IrishrailFeedDownloader {
             HttpConnectionParams.setConnectionTimeout(client.getParams(), FETCH_TIMEOUT_MS);
             HttpGet request = new HttpGet(IRISHRAIL_FEED_URL + URLEncoder.encode(stationCode));
             HttpResponse response = client.execute(request);
-            switch (response.getStatusLine().getStatusCode()) {
-                case 200:
-                    return parseSuccessfulResponse(response);
-                case 500:
-                    // Hack: irishrails returns 500 when no trains are incoming
-                    // -.-
-                    return new ArrayList<Train>();
-                default:
-                    Log.e(TAG,
-                            "Unexpected status while fetching irishrail RSS feed: "
-                                    + response.getStatusLine());
-                    throw new IOException();
+            if (response.getStatusLine().getStatusCode() == 200) {
+                return parseSuccessfulResponse(response);
+            } else {
+                Log.e(TAG,
+                        "Unexpected status while fetching irishrail RSS feed: "
+                                + response.getStatusLine());
+                throw new IOException();
             }
         } finally {
             client.getConnectionManager().shutdown();
@@ -64,8 +58,7 @@ public class IrishrailFeedDownloader {
             throws ParserException, IOException {
         HttpEntity entity = response.getEntity();
         try {
-            InputStream in = entity.getContent();
-            return IrishrailFeedParser.parse(in, "utf-8");
+            return IrishrailFeedParser.parse(entity.getContent());
         } finally {
             entity.consumeContent();
         }

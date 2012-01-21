@@ -16,19 +16,31 @@
 
 package com.googlecode.traein;
 
+import java.util.Comparator;
+
 public class Train {
+
+    public static final Comparator<Train> BY_TIME = new Comparator<Train>() {
+        public int compare(Train lhs, Train rhs) {
+            if (lhs.getTime().startsWith("00:") && rhs.getTime().startsWith("23:")) {
+                return 1;
+            } else if (lhs.getTime().startsWith("23:") && rhs.getTime().startsWith("00:")) {
+                return -1;
+            } else {
+                return lhs.getTime().compareTo(rhs.getTime());
+            }
+        }
+    };
+
     private final String mOrigin;
 
     private final String mDestination;
 
-    private final boolean mTerminus;
-
     private final String mTime;
 
-    public Train(String origin, String destination, boolean terminus, String time) {
+    public Train(String origin, String destination, String time) {
         mOrigin = origin;
         mDestination = destination;
-        mTerminus = terminus;
         mTime = time;
     }
 
@@ -38,10 +50,6 @@ public class Train {
 
     public String getDestination() {
         return mDestination;
-    }
-
-    public boolean isTerminus() {
-        return mTerminus;
     }
 
     public String getTime() {
@@ -61,23 +69,15 @@ public class Train {
             return false;
         } else {
             Train o = (Train)other;
-            return mTerminus == o.mTerminus && mOrigin.equals(o.mOrigin)
-                    && mDestination.equals(o.mDestination) && mTime.equals(o.mTime);
+            return mOrigin.equals(o.mOrigin) && mDestination.equals(o.mDestination)
+                    && mTime.equals(o.mTime);
         }
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Train < mOrigin:'");
-        sb.append(mOrigin);
-        sb.append("' mDestination:'");
-        sb.append(mDestination);
-        sb.append("' mTime:'");
-        sb.append(mTime);
-        sb.append("' mTerminus:");
-        sb.append(mTerminus);
-        sb.append(" >");
-        return sb.toString();
+        return new StringBuilder().append("Train < mOrigin:'").append(mOrigin)
+                .append("' mDestination:'").append(mDestination).append("' mTime:'").append(mTime)
+                .append(" >").toString();
     }
 }

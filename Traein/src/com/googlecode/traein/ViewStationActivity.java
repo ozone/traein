@@ -25,6 +25,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -240,6 +241,7 @@ public class ViewStationActivity extends ListActivity {
             try {
                 return new Success(IrishrailFeedDownloader.download(params[0]));
             } catch (ParserException e) {
+                Log.e("tsss", "wtf", e);
                 return new Failed(PARSER_ERROR_DIALOG);
             } catch (SocketTimeoutException e) {
                 return new Failed(TIMEOUT_ERROR_DIALOG);

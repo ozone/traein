@@ -16,14 +16,14 @@
 
 package com.googlecode.traein;
 
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import java.util.List;
 
 public class TrainListAdapter extends ArrayAdapter<Train> {
     private static final int RESOURCE = R.layout.train_list_item;
@@ -57,12 +57,8 @@ public class TrainListAdapter extends ArrayAdapter<Train> {
     }
 
     private String renderText1(Train train) {
-        if (train.isTerminus()) {
-            return getContext().getString(R.string.train_terminates, train.getTime());
-        } else {
-            return getContext().getString(R.string.train_destination, train.getTime(),
-                    train.getDestination());
-        }
+        return getContext().getString(R.string.train_destination, train.getTime(),
+                train.getDestination());
     }
 
     private String renderText2(Train train) {

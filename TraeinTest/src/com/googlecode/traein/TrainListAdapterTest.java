@@ -16,12 +16,12 @@
 
 package com.googlecode.traein;
 
-import java.util.ArrayList;
-
 import android.database.DataSetObserver;
 import android.test.AndroidTestCase;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class TrainListAdapterTest extends AndroidTestCase {
 
@@ -50,9 +50,9 @@ public class TrainListAdapterTest extends AndroidTestCase {
     @Override
     protected void setUp() {
         mTrains = new ArrayList<Train>();
-        mTrains.add(new Train("Bray", "Howth", true, "12:40"));
-        mTrains.add(new Train("Howth", "Bray", false, "12:45"));
-        mTrains.add(new Train("Greystones", "Howth", true, "12:50"));
+        mTrains.add(new Train("Bray", "Howth", "12:40"));
+        mTrains.add(new Train("Howth", "Bray", "12:45"));
+        mTrains.add(new Train("Greystones", "Howth", "12:50"));
         mAdapter = new TrainListAdapter(getContext(), mTrains);
         mEmptyAdapter = new TrainListAdapter(getContext(), new ArrayList<Train>());
     }
@@ -81,14 +81,14 @@ public class TrainListAdapterTest extends AndroidTestCase {
     }
 
     public void testGetView() {
-        mTrains.add(new Train("Bray", "Howth", true, "12:40"));
-        mTrains.add(new Train("Howth", "Bray", false, "12:45"));
-        mTrains.add(new Train("Greystones", "Howth", true, "12:50"));
+        mTrains.add(new Train("Bray", "Howth", "12:40"));
+        mTrains.add(new Train("Howth", "Bray", "12:45"));
+        mTrains.add(new Train("Greystones", "Howth", "12:50"));
 
         View view = mAdapter.getView(0, null, null);
         TextView text1 = (TextView)view.findViewById(android.R.id.text1);
         TextView text2 = (TextView)view.findViewById(android.R.id.text2);
-        assertEquals("12:40 Terminates", text1.getText());
+        assertEquals("12:40 Howth", text1.getText());
         assertEquals("From Bray", text2.getText());
 
         view = mAdapter.getView(1, view, null);
@@ -96,7 +96,7 @@ public class TrainListAdapterTest extends AndroidTestCase {
         assertEquals("From Howth", text2.getText());
 
         view = mAdapter.getView(2, view, null);
-        assertEquals("12:50 Terminates", text1.getText());
+        assertEquals("12:50 Howth", text1.getText());
         assertEquals("From Greystones", text2.getText());
     }
 

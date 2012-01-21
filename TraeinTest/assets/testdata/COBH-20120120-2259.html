@@ -1,0 +1,83 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="refresh" content="60;url=http://www.irishrail.ie/realtime/station_details.jsp?ref=COBH&p=1" />
+<title>Irish Rail Station Detail</title>
+<meta http-equiv="cache-control" content="no-cache" />
+<link rel="stylesheet" type="text/css" media="screen,projection" href="realtime.css" charset="utf-8" />
+
+<script type="text/javascript"> 
+function showTrain(traincode) {
+	var div_name = "train" + traincode;
+	if (document.getElementById(div_name).style.display == 'none') {
+
+		document.getElementById(div_name).style.display = "";
+
+	} else {
+
+		document.getElementById(div_name).style.display = 'none';
+
+	}
+} // end of function
+</script>
+</head>
+<body>
+
+
+<!-- start inpage contain -->
+<div class="popup-contain lrg">
+<div class="station-area-iframe">
+
+<table width="666" cellpadding="0" cellspacing="0" summary="Realtime results">
+<tr class="table_header">
+	<th>Train</th>
+	<th>Origin</th>
+	<th>Destination</th>
+	<th>Service</th>
+	<th>Sch</th>
+	<th>ETA</th>
+	<th>Due in</th>
+	<th>Latest Information</th>
+</tr>
+
+<tr><td><a href="#" onClick="javascript:showTrain('P270');">P270</a></td><td>Cobh</td><td>Cork</td><td>ARROW</td><td>23:00</td><td>23:00</td><td>1 mins</td><td> </td></tr><tr id="trainP270" style="display:none;"><td colspan="8" ><table width="350" cellpadding="0" cellspacing="0" class="table_type1" summary="Train details"><tr class="table_header"><th></th><th>Station</th><th>Arrival</th><th>Departure</th></tr><tr><td class="noborder"><img src="images/station-no.gif" width="25" height="25" /></td><td>Cobh</td><td></td><td>23:00:00</td></tr><tr><td class="noborder"><img src="images/station-no.gif" width="25" height="25" /></td><td>Rushbrooke</td><td>23:02:30</td><td>23:03:00</td></tr><tr><td class="noborder"><img src="images/station-no.gif" width="25" height="25" /></td><td>Carrigaloe</td><td>23:06:00</td><td>23:06:30</td></tr><tr><td class="noborder"><img src="images/station-no.gif" width="25" height="25" /></td><td>Fota</td><td>23:09:30</td><td>23:10:00</td></tr><tr><td class="noborder"><img src="images/station-no.gif" width="25" height="25" /></td><td>Glounthaune</td><td>23:13:30</td><td>23:14:00</td></tr><tr><td class="noborder"><img src="images/station-no.gif" width="25" height="25" /></td><td>LittleIsland</td><td>23:16:30</td><td>23:17:00</td></tr><tr><td class="noborder"><img src="images/station-no.gif" width="25" height="25" /></td><td>Cork</td><td>23:24:00</td><td></td></tr></table></td></tr>
+</table>
+
+</div>
+</div>
+<!-- stop inpage contain -->
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

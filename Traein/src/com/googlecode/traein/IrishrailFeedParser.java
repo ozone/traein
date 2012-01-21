@@ -18,101 +18,49 @@ package com.googlecode.traein;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
-
 public class IrishrailFeedParser {
-    public static ArrayList<Train> parse(InputStream input, String encoding) throws ParserException {
+    private static final Pattern TRAIN_PATTERN = Pattern
+            .compile("<td>([^<]*)</td><td>([^<]*)</td><td>[^<]*</td><td>([^<]*)</td><td>[^<]*</td><td>[^<]*</td>");
+
+    private static final int ORIGIN_GROUP = 1;
+
+    private static final int DESTINATION_GROUP = 2;
+
+    private static final int TIME_GROUP = 3;
+
+    public static ArrayList<Train> parse(InputStream input) throws ParserException {
         try {
-            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-            XmlPullParser parser = factory.newPullParser();
-            parser.setInput(input, encoding);
-            parser.require(XmlPullParser.START_DOCUMENT, null, null);
-            parser.nextTag();
-            parser.require(XmlPullParser.START_TAG, null, "rss");
-            parser.nextTag();
-            parser.require(XmlPullParser.START_TAG, null, "channel");
-            getTagContent(parser, "title");
-            getTagContent(parser, "description");
-            getTagContent(parser, "link");
-
+            Matcher matcher = TRAIN_PATTERN.matcher(convertInputStreamToString(input, "UTF-8"));
             ArrayList<Train> trains = new ArrayList<Train>();
-
-            parser.nextTag();
-            while (parser.getEventType() != XmlPullParser.END_TAG) {
-                parser.require(XmlPullParser.START_TAG, null, "item");
-                String title = getTagContent(parser, "title");
-                String description = getTagContent(parser, "description");
-                parser.nextTag();
-                parser.require(XmlPullParser.END_TAG, null, "item");
-                trains.add(parseTitleAndDescription(title, description));
-
-                parser.nextTag();
+            while (matcher.find()) {
+                trains.add(new Train(matcher.group(ORIGIN_GROUP), matcher.group(DESTINATION_GROUP),
+                        matcher.group(TIME_GROUP)));
             }
-            parser.require(XmlPullParser.END_TAG, null, "channel");
-            parser.nextTag();
-            parser.require(XmlPullParser.END_TAG, null, "rss");
-            parser.next();
-            parser.require(XmlPullParser.END_DOCUMENT, null, null);
+            Collections.sort(trains, Train.BY_TIME);
             return trains;
-        } catch (XmlPullParserException e) {
-            throw new ParserException(e);
         } catch (IOException e) {
             throw new ParserException(e);
         }
     }
 
-    private static String getTagContent(XmlPullParser parser, String tag)
-            throws XmlPullParserException, IOException {
-        parser.nextTag();
-        parser.require(XmlPullParser.START_TAG, null, tag);
-        String content = parser.nextText();
-        parser.require(XmlPullParser.END_TAG, null, tag);
-        return content;
-    }
-
-    private static final String TIME = "\\d{1,2}:\\d{2}";
-
-    private static final String TRAIN = "[0-9A-Z]{4,5}";
-
-    private static final String STATION = ".*";
-
-    private static final Pattern TITLE_PATTERN = Pattern.compile("^" + TIME + "  to " + STATION
-            + "$");
-
-    private static final Pattern TITLE_TERMINUS_PATTERN = Pattern.compile("^Terminates at  "
-            + STATION + "$");
-
-    private static final Pattern DESCRIPTION_PATTERN = Pattern.compile("^" + TRAIN
-            + " - Origin : (" + STATION + ") - Destination : (" + STATION
-            + ") \\| -   Expected departure at " + STATION + " :(" + TIME
-            + ") \\| -   Scheduled departure at " + TIME + "$");
-
-    private static final Pattern DESCRIPTION_TERMINUS_PATTERN = Pattern.compile("^" + TRAIN
-            + " - Origin : (" + STATION + ") - Destination : (" + STATION
-            + ") \\| -   Expected arrival at " + STATION + " : (" + TIME + ") -   Terminates at  "
-            + STATION + "$");
-
-    private static Train parseTitleAndDescription(String title, String description)
-            throws ParserException {
-        boolean terminus = title.startsWith("Terminates at  ");
-        Pattern titlePattern = terminus ? TITLE_TERMINUS_PATTERN : TITLE_PATTERN;
-        Pattern descriptionPattern = terminus ? DESCRIPTION_TERMINUS_PATTERN : DESCRIPTION_PATTERN;
-        if (!titlePattern.matcher(title).matches()) {
-            throw new ParserException("Unexpected title: " + title);
+    private static String convertInputStreamToString(InputStream input, String encoding)
+            throws UnsupportedEncodingException, IOException {
+        InputStreamReader reader = new InputStreamReader(input, encoding != null ? encoding
+                : System.getProperty("file.encoding"));
+        StringWriter sw = new StringWriter();
+        char[] buffer = new char[4096];
+        int n = 0;
+        while (-1 != (n = reader.read(buffer))) {
+            sw.write(buffer, 0, n);
         }
-        Matcher m = descriptionPattern.matcher(description);
-        if (!m.matches()) {
-            throw new ParserException("Unexpection description: " + description);
-        }
-        String origin = m.group(1);
-        String destination = m.group(2);
-        String time = m.group(3);
-        return new Train(origin, destination, terminus, time);
+        return sw.toString();
     }
 }
