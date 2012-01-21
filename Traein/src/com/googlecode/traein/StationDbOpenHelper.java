@@ -16,8 +16,6 @@
 
 package com.googlecode.traein;
 
-import java.io.IOException;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -28,12 +26,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.io.IOException;
+
 public class StationDbOpenHelper extends SQLiteOpenHelper {
     private static final String TAG = StationDbOpenHelper.class.getSimpleName();
 
     private static final String DATABASE_NAME = "traein.db";
 
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 8;
 
     private final Context mContext;
 
