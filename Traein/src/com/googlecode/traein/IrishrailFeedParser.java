@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
 
 public class IrishrailFeedParser {
     private static final Pattern TRAIN_PATTERN = Pattern
-            .compile("<td>([^<]*)</td><td>([^<]*)</td><td>[^<]*</td><td>([^<]*)</td><td>[^<]*</td><td>[^<]*</td>");
+            .compile("<td>([^<]*)</td><td>([^<]*)</td><td>[^<]*</td><td>[^<]*</td><td>([^<]*)</td><td>[^<]*</td>");
 
     private static final int ORIGIN_GROUP = 1;
 

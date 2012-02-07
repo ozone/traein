@@ -26,24 +26,24 @@ public class IrishrailFeedParserTest extends InstrumentationTestCase {
 
     public void testParserTrains() throws Exception {
         ArrayList<Train> expected = new ArrayList<Train>();
-        expected.add(new Train("Dublin Pearse", "Maynooth", "08:04"));
-        expected.add(new Train("Malahide", "Dun Laoghaire", "08:04"));
-        expected.add(new Train("Bray", "Howth", "08:07"));
-        expected.add(new Train("Howth", "Bray", "08:09"));
-        expected.add(new Train("Drogheda", "Bray", "08:14"));
+        expected.add(new Train("Malahide", "Dun Laoghaire", "08:05"));
+        expected.add(new Train("Dublin Pearse", "Maynooth", "08:10"));
+        expected.add(new Train("Howth", "Bray", "08:11"));
+        expected.add(new Train("Bray", "Howth", "08:14"));
+        expected.add(new Train("Drogheda", "Bray", "08:17"));
         expected.add(new Train("Longford", "Dublin Pearse", "08:17"));
-        expected.add(new Train("Dundalk", "Dublin Connolly", "08:18"));
-        expected.add(new Train("Greystones", "Malahide", "08:23"));
-        expected.add(new Train("Howth", "Greystones", "08:26"));
+        expected.add(new Train("Dundalk", "Dublin Connolly", "08:20"));
         expected.add(new Train("Dublin Pearse", "Maynooth", "08:27"));
+        expected.add(new Train("Greystones", "Malahide", "08:27"));
+        expected.add(new Train("Howth", "Greystones", "08:27"));
         expected.add(new Train("Maynooth", "Dublin Connolly", "08:29"));
-        expected.add(new Train("Bray", "Dublin Connolly", "08:31"));
         expected.add(new Train("Malahide", "Dun Laoghaire", "08:31"));
-        expected.add(new Train("Newry", "Bray", "08:35"));
-        expected.add(new Train("Bray", "Howth", "08:37"));
+        expected.add(new Train("Bray", "Dublin Connolly", "08:33"));
+        expected.add(new Train("Newry", "Bray", "08:36"));
+        expected.add(new Train("Bray", "Howth", "08:39"));
         expected.add(new Train("Maynooth", "Bray", "08:39"));
-        expected.add(new Train("Rosslare Europort", "Dundalk", "08:45"));
-        expected.add(new Train("Greystones", "Malahide", "08:54"));
+        expected.add(new Train("Rosslare Europort", "Dundalk", "08:48"));
+        expected.add(new Train("Greystones", "Malahide", "08:55"));
         expected.add(new Train("Dun Laoghaire", "Dublin Connolly", "09:02"));
         expected.add(new Train("Dublin Connolly", "Sligo", "09:05"));
 
