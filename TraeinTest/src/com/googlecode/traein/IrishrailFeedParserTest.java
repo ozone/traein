@@ -26,31 +26,22 @@ public class IrishrailFeedParserTest extends InstrumentationTestCase {
 
     public void testParserTrains() throws Exception {
         ArrayList<Train> expected = new ArrayList<Train>();
-        expected.add(new Train("Malahide", "Dun Laoghaire", "08:05"));
-        expected.add(new Train("Dublin Pearse", "Maynooth", "08:10"));
-        expected.add(new Train("Howth", "Bray", "08:11"));
-        expected.add(new Train("Bray", "Howth", "08:14"));
-        expected.add(new Train("Drogheda", "Bray", "08:17"));
-        expected.add(new Train("Longford", "Dublin Pearse", "08:17"));
-        expected.add(new Train("Dundalk", "Dublin Connolly", "08:20"));
-        expected.add(new Train("Dublin Pearse", "Maynooth", "08:27"));
-        expected.add(new Train("Greystones", "Malahide", "08:27"));
-        expected.add(new Train("Howth", "Greystones", "08:27"));
-        expected.add(new Train("Maynooth", "Dublin Connolly", "08:29"));
-        expected.add(new Train("Malahide", "Dun Laoghaire", "08:31"));
-        expected.add(new Train("Bray", "Dublin Connolly", "08:33"));
-        expected.add(new Train("Newry", "Bray", "08:36"));
-        expected.add(new Train("Bray", "Howth", "08:39"));
-        expected.add(new Train("Maynooth", "Bray", "08:39"));
-        expected.add(new Train("Rosslare Europort", "Dundalk", "08:48"));
-        expected.add(new Train("Greystones", "Malahide", "08:55"));
-        expected.add(new Train("Dun Laoghaire", "Dublin Connolly", "09:02"));
-        expected.add(new Train("Dublin Connolly", "Sligo", "09:05"));
+        expected.add(new Train("Malahide", "Greystones", 1));
+        expected.add(new Train("Drogheda", "Dublin Pearse", 3));
+        expected.add(new Train("Greystones", "Malahide", 19));
+        expected.add(new Train("Dundalk", "Dublin Pearse", 20));
+        expected.add(new Train("Malahide", "Greystones", 29));
+        expected.add(new Train("Greystones", "Malahide", 47));
+        expected.add(new Train("Dublin Pearse", "Drogheda", 53));
+        expected.add(new Train("Malahide", "Greystones", 61));
+        expected.add(new Train("Drogheda", "Dublin Pearse", 74));
+        expected.add(new Train("Greystones", "Malahide", 79));
+        expected.add(new Train("Malahide", "Greystones", 89));
 
         AssetManager assets = getInstrumentation().getContext().getAssets();
-        InputStream in = assets.open("testdata/CNLLY-20120120-0806.html");
+        InputStream in = assets.open("testdata/MHIDE-20140212-130153.xml");
         try {
-            ArrayList<Train> actual = IrishrailFeedParser.parse(in);
+            ArrayList<Train> actual = IrishrailFeedParser.parse(in, "utf-8");
             assertEquals(expected, actual);
         } finally {
             in.close();
@@ -60,9 +51,9 @@ public class IrishrailFeedParserTest extends InstrumentationTestCase {
     public void testParserNoTrains() throws Exception {
         ArrayList<Train> expected = new ArrayList<Train>();
         AssetManager assets = getInstrumentation().getContext().getAssets();
-        InputStream in = assets.open("testdata/CTARF-20120120-0109.html");
+        InputStream in = assets.open("testdata/WLOW-20140212-130516.xml");
         try {
-            ArrayList<Train> actual = IrishrailFeedParser.parse(in);
+            ArrayList<Train> actual = IrishrailFeedParser.parse(in, "utf-8");
             assertEquals(expected, actual);
         } catch (ParserException e) {
             // expected

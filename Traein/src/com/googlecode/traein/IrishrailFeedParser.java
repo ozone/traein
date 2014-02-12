@@ -18,49 +18,70 @@ package com.googlecode.traein;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
 
 public class IrishrailFeedParser {
-    private static final Pattern TRAIN_PATTERN = Pattern
-            .compile("<td>([^<]*)</td><td>([^<]*)</td><td>[^<]*</td><td>[^<]*</td><td>([^<]*)</td><td>[^<]*</td>");
 
-    private static final int ORIGIN_GROUP = 1;
-
-    private static final int DESTINATION_GROUP = 2;
-
-    private static final int TIME_GROUP = 3;
-
-    public static ArrayList<Train> parse(InputStream input) throws ParserException {
+    public static ArrayList<Train> parse(InputStream input, String encoding) throws ParserException {
         try {
-            Matcher matcher = TRAIN_PATTERN.matcher(convertInputStreamToString(input, "UTF-8"));
+        	XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+        	XmlPullParser parser = factory.newPullParser();
+        	parser.setInput(input, encoding);
+        	parser.require(XmlPullParser.START_DOCUMENT, null, null);
+        	parser.nextTag();
+        	parser.require(XmlPullParser.START_TAG, null, "ArrayOfObjStationData");
+        	parser.nextTag();
             ArrayList<Train> trains = new ArrayList<Train>();
-            while (matcher.find()) {
-                trains.add(new Train(matcher.group(ORIGIN_GROUP), matcher.group(DESTINATION_GROUP),
-                        matcher.group(TIME_GROUP)));
+            while (parser.getEventType() != XmlPullParser.END_TAG) {
+            	parser.require(XmlPullParser.START_TAG, null, "objStationData");
+            	contentOf(parser, "Servertime");
+            	contentOf(parser, "Traincode");
+            	contentOf(parser, "Stationfullname");
+            	contentOf(parser, "Stationcode");
+    			contentOf(parser, "Querytime");
+    			contentOf(parser, "Traindate");
+    			String origin = contentOf(parser, "Origin");
+    			String destination = contentOf(parser, "Destination");
+    			contentOf(parser, "Origintime");
+                contentOf(parser, "Destinationtime");
+                contentOf(parser, "Status");
+                contentOf(parser, "Lastlocation");
+                int dueIn = Integer.parseInt(contentOf(parser, "Duein"));
+                contentOf(parser, "Late");
+                contentOf(parser, "Exparrival");
+                contentOf(parser, "Expdepart");
+                contentOf(parser, "Scharrival");
+                contentOf(parser, "Schdepart");
+                contentOf(parser, "Direction");
+                contentOf(parser, "Traintype");
+                contentOf(parser, "Locationtype");
+                parser.nextTag();
+                parser.require(XmlPullParser.END_TAG, null, "objStationData");
+                parser.nextTag();
+                trains.add(new Train(origin, destination, dueIn));
             }
-            Collections.sort(trains, Train.BY_TIME);
+            parser.require(XmlPullParser.END_TAG, null, "ArrayOfObjStationData");
+            parser.next();
+            parser.require(XmlPullParser.END_DOCUMENT, null, null);
+            Collections.sort(trains, Train.BY_DUE_TIME);
             return trains;
         } catch (IOException e) {
             throw new ParserException(e);
-        }
+        } catch (XmlPullParserException e) {
+			throw new ParserException(e);
+		}
     }
-
-    private static String convertInputStreamToString(InputStream input, String encoding)
-            throws UnsupportedEncodingException, IOException {
-        InputStreamReader reader = new InputStreamReader(input, encoding != null ? encoding
-                : System.getProperty("file.encoding"));
-        StringWriter sw = new StringWriter();
-        char[] buffer = new char[4096];
-        int n = 0;
-        while (-1 != (n = reader.read(buffer))) {
-            sw.write(buffer, 0, n);
-        }
-        return sw.toString();
+    
+    private static String contentOf(XmlPullParser parser, String tag) throws XmlPullParserException, IOException {
+    	parser.nextTag();
+    	parser.require(XmlPullParser.START_TAG, null, tag);
+    	String content = parser.nextText();
+    	parser.require(XmlPullParser.END_TAG, null, tag);
+    	return content;
     }
 }

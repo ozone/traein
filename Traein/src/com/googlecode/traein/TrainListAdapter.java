@@ -57,14 +57,16 @@ public class TrainListAdapter extends ArrayAdapter<Train> {
     }
 
     private String renderText1(Train train) {
-        return getContext().getString(R.string.train_destination, train.getTime(),
-                train.getDestination());
+    	String due = train.getDueInMinutes() == 0 ?
+    			getContext().getString(R.string.train_due_now) :
+    				getContext().getString(R.string.train_due_in_minutes, train.getDueInMinutes());
+        return getContext().getString(R.string.train_destination, train.getDestination()) + " " + due;
     }
 
     private String renderText2(Train train) {
         return getContext().getString(R.string.train_origin, train.getOrigin());
     }
-
+    
     private static class ViewHolder {
         private final TextView mTextView1;
 

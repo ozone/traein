@@ -20,15 +20,9 @@ import java.util.Comparator;
 
 public class Train {
 
-    public static final Comparator<Train> BY_TIME = new Comparator<Train>() {
+    public static final Comparator<Train> BY_DUE_TIME = new Comparator<Train>() {
         public int compare(Train lhs, Train rhs) {
-            if (lhs.getTime().startsWith("00:") && rhs.getTime().startsWith("23:")) {
-                return 1;
-            } else if (lhs.getTime().startsWith("23:") && rhs.getTime().startsWith("00:")) {
-                return -1;
-            } else {
-                return lhs.getTime().compareTo(rhs.getTime());
-            }
+        	return lhs.getDueInMinutes() - rhs.getDueInMinutes();
         }
     };
 
@@ -36,12 +30,12 @@ public class Train {
 
     private final String mDestination;
 
-    private final String mTime;
+    private final int mDueInMin;
 
-    public Train(String origin, String destination, String time) {
+    public Train(String origin, String destination, int dueInMin) {
         mOrigin = origin;
         mDestination = destination;
-        mTime = time;
+        mDueInMin = dueInMin;
     }
 
     public String getOrigin() {
@@ -52,13 +46,13 @@ public class Train {
         return mDestination;
     }
 
-    public String getTime() {
-        return mTime;
+    public int getDueInMinutes() {
+        return mDueInMin;
     }
 
     @Override
     public int hashCode() {
-        return mOrigin.hashCode() ^ mDestination.hashCode() ^ mTime.hashCode();
+        return mOrigin.hashCode() ^ mDestination.hashCode() ^ mDueInMin;
     }
 
     @Override
@@ -70,14 +64,14 @@ public class Train {
         } else {
             Train o = (Train)other;
             return mOrigin.equals(o.mOrigin) && mDestination.equals(o.mDestination)
-                    && mTime.equals(o.mTime);
+                    && mDueInMin == o.mDueInMin;
         }
     }
 
     @Override
     public String toString() {
         return new StringBuilder().append("Train < mOrigin:'").append(mOrigin)
-                .append("' mDestination:'").append(mDestination).append("' mTime:'").append(mTime)
+                .append("' mDestination:'").append(mDestination).append("' mDueMin:'").append(mDueInMin)
                 .append(" >").toString();
     }
 }

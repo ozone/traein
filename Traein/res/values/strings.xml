@@ -21,11 +21,13 @@
 
     <!-- Activity names -->
     <string name="select_a_station">Traein - Select a Station</string>
-    <string name="view_station">Traein - Trains in the next hour</string>
+    <string name="view_station">Traein - Trains in the next 90 minutes</string>
     <string name="shortcut">Train station</string>
-    <string name="train_destination">%1$s %2$s</string>
+    <string name="train_destination">%1$s</string>
     <string name="train_origin">From %1$s</string>
-    <string name="no_trains">No trains in the next hour.</string>
+    <string name="train_due_now">due now</string>
+   	<string name="train_due_in_minutes">in %1$d min</string>
+    <string name="no_trains">No trains in the next 90 minutes.</string>
 
     <!-- Menus -->
     <string name="menu_about">About</string>

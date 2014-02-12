@@ -18,6 +18,6 @@
 
     <!-- Activity names -->
     <string name="select_a_station">Select a Station</string>
-    <string name="view_station">Trains in the next hour</string>
+    <string name="view_station">Trains in the next 90 minutes</string>
 
 </resources>

@@ -21,16 +21,16 @@ import android.test.AndroidTestCase;
 public class TrainTest extends AndroidTestCase {
 
     public void testTrainByTimeComparator() {
-        Train a = new Train("A", "B", "23:45");
-        Train b = new Train("B", "C", "23:55");
-        Train c = new Train("C", "D", "00:00");
+        Train a = new Train("A", "B", 0);
+        Train b = new Train("B", "C", 10);
+        Train c = new Train("C", "D", 15);
 
-        assertTrue(Train.BY_TIME.compare(a, a) == 0);
-        assertTrue(Train.BY_TIME.compare(a, b) < 0);
-        assertTrue(Train.BY_TIME.compare(b, c) < 0);
-        assertTrue(Train.BY_TIME.compare(a, c) < 0);
-        assertTrue(Train.BY_TIME.compare(b, a) > 0);
-        assertTrue(Train.BY_TIME.compare(c, b) > 0);
-        assertTrue(Train.BY_TIME.compare(c, a) > 0);
+        assertTrue(Train.BY_DUE_TIME.compare(a, a) == 0);
+        assertTrue(Train.BY_DUE_TIME.compare(a, b) < 0);
+        assertTrue(Train.BY_DUE_TIME.compare(b, c) < 0);
+        assertTrue(Train.BY_DUE_TIME.compare(a, c) < 0);
+        assertTrue(Train.BY_DUE_TIME.compare(b, a) > 0);
+        assertTrue(Train.BY_DUE_TIME.compare(c, b) > 0);
+        assertTrue(Train.BY_DUE_TIME.compare(c, a) > 0);
     }
 }

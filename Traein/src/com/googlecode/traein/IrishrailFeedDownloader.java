@@ -16,6 +16,10 @@
 
 package com.googlecode.traein;
 
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -24,14 +28,10 @@ import org.apache.http.params.HttpConnectionParams;
 
 import android.util.Log;
 
-import java.io.IOException;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-
 public class IrishrailFeedDownloader {
     private static final String TAG = IrishrailFeedDownloader.class.getSimpleName();
 
-    private static final String IRISHRAIL_FEED_URL = "http://www.irishrail.ie/realtime/station_details.jsp?ref=";
+    private static final String IRISHRAIL_FEED_URL = "http://api.irishrail.ie/realtime/realtime.asmx/getStationDataByCodeXML?StationCode=";
 
     private static final int FETCH_TIMEOUT_MS = 60 * 1000;
 
@@ -39,7 +39,7 @@ public class IrishrailFeedDownloader {
         DefaultHttpClient client = new DefaultHttpClient();
         try {
             HttpConnectionParams.setConnectionTimeout(client.getParams(), FETCH_TIMEOUT_MS);
-            HttpGet request = new HttpGet(IRISHRAIL_FEED_URL + URLEncoder.encode(stationCode));
+            HttpGet request = new HttpGet(IRISHRAIL_FEED_URL + URLEncoder.encode(stationCode, "UTF-8"));
             HttpResponse response = client.execute(request);
             if (response.getStatusLine().getStatusCode() == 200) {
                 return parseSuccessfulResponse(response);
@@ -58,7 +58,7 @@ public class IrishrailFeedDownloader {
             throws ParserException, IOException {
         HttpEntity entity = response.getEntity();
         try {
-            return IrishrailFeedParser.parse(entity.getContent());
+            return IrishrailFeedParser.parse(entity.getContent(), "utf-8");
         } finally {
             entity.consumeContent();
         }
